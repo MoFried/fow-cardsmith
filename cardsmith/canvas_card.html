@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom FoW TCG Card Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="canvas_card.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 mb-3" id="formDiv">
+                <h3 class="mb-3"><u>FoW Cardsmith (Lapis frame)</u>
+                    <button type="button" class="btn btn-link text-danger" onclick="clearForm()">(Clear form)</button>
+                </h3>
+                <form id="card-details-form">
+                    <div class="form-group">
+                        <label for="card-type" class="font-weight-bold">Type:</label>
+                        <select id="card-type" name="card-type" class="form-control" aria-describedby="card-type-help">
+                            <option selected>Chant</option>
+                            <option>Addition</option>
+                            <option>Regalia</option>
+                        </select>
+                        <small id="card-type-help" class="form-text text-muted">May add J/Ruler and resonator in the
+                            future.</small>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <h6 class="mb-3">Background Image:</h6>
+                            <label>
+                                <input type="radio" name="bgImgInputType" value="url" checked>
+                                URL:
+                            </label>
+                            <input type="text" id="bg-image-url" name="bg-image-url" placeholder="Enter Image URL"
+                                value="./img/other/kitten.jpg">
+                            <br />
+                            <label>
+                                <input type="radio" name="bgImgInputType" value="upload">
+                                Upload:
+                            </label>
+                            <input type="file" id="bg-image-upload" name="bg-image-upload" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Name:</label>
+                        <input type="text" class="form-control" id="card-name" name="card-name"
+                            placeholder="Enter card name" value="Kitty Cat's Rest">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-race">Race/Trait:</label>
+                        <input type="text" class="form-control" id="card-race" name="card-race"
+                            placeholder="Enter card race" value="Cat Art">
+                    </div>
+                    <h6>Cost: <small>(total cannot exceed 5)</small></h6>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="w-cost"><img class="effectImage ml-1" src="img/symbols/white-fa.png"></label>
+                            <select id="w-cost" name="w-cost" class="form-control-sm">
+                                <option>0</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="r-cost"><img class="effectImage ml-1" src="img/symbols/red-fa.png"></label>
+                            <select id="r-cost" name="r-cost" class="form-control-sm">
+                                <option>0</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="u-cost"><img class="effectImage ml-1" src="img/symbols/blue-fa.png"></label>
+                            <select id="u-cost" name="u-cost" class="form-control-sm">
+                                <option>0</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="g-cost"><img class="effectImage ml-1" src="img/symbols/green-fa.png"></label>
+                            <select id="g-cost" name="g-cost" class="form-control-sm">
+                                <option>0</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-cost"><img class="effectImage ml-1" src="img/symbols/black-fa.png"></label>
+                            <select id="b-cost" name="b-cost" class="form-control-sm">
+                                <option>0</option>
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="m-cost"><img class="effectImage ml-1" src="img/symbols/moon-fa.png"></label>
+                            <select id="m-cost" name="m-cost" class="form-control-sm">
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="t-cost"><img class="effectImage ml-1" src="img/symbols/time-fa.png"></label>
+                            <select id="t-cost" name="t-cost" class="form-control-sm">
+                                <option selected>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="void-cost">Void Cost: <img class="effectImage"
+                                    src="img/symbols/void-fa.png"></label>
+                            <select id="void-cost" name="void-cost" class="form-control-sm mr-3">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option selected>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>X</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quickcast">Quickcast:</label>
+                            <select id="quickcast" name="quickcast" class="form-control-sm">
+                                <option selected>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-ability">Ability Text: <small>(<a href="keywords.html" target="_blank">view all
+                                    keywords</a>)</small></label>
+                        <textarea class="form-control" id="card-ability" name="card-ability"
+                            placeholder="Enter ability text" rows="3">{Remnant}
+You gain 4000 life.
+{Awakening}{M}{T}{3}: Destroy target player your opponent is.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-flavor">Flavor Text:</label>
+                        <input type="text" class="form-control" id="card-flavor" name="card-flavor"
+                            placeholder="Enter flavor text" value="If it fits, I sits.">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="collector-number" class="ml-1" title="Collector Number">Coll. #:</label>
+                            <input type="text" class="form-control-sm" id="collector-number" name="collector-number"
+                                placeholder="Enter collector number" value="CAT-001">
+                        </div>
+                        <div class="form-group">
+                            <label for="rarity" class="ml-1">Rarity:</label>
+                            <select id="rarity" name="rarity" class="form-control-sm">
+                                <option>N</option>
+                                <option selected>R</option>
+                                <option>SR</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="copyright" class="ml-1">Copyright:</label>
+                            <input type="text" class="form-control-sm" id="copyright" name="copyright"
+                                placeholder="Enter Copyright holder" value="FOW Cardsmith">
+                        </div>
+                        <div class="form-group">
+                            <label for="artist" class="ml-1">Artist:</label>
+                            <input type="text" class="form-control-sm" id="artist" name="artist"
+                                placeholder="Enter artist name" value="Unknown">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update Canvas</button>
+                    <button type="button" class="btn btn-success" onclick="downloadCard()">Download Card</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="mb-3">Result:</h4>
+                <canvas id="myCanvas" width="747" height="1043"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="//unpkg.com/canvas-txt"></script>
+    <script type="module" src="scripts/canvas_card.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+<!-- TODO: flavor text size and styling. Need to add void cost and card type and race, then footer info. -->

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ability Text Keywords</title>
+    <style>
+        .my-header {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .my-header>h2 {
+            margin-bottom: 10px;
+        }
+
+        .my-header>p {
+            margin-bottom: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            width: auto;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .keyword-icon {
+            height: 1.25em;
+            vertical-align: bottom;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: #ffffff;
+                background-color: #333333;
+            }
+
+            th {
+                background-color: #171717;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="my-header">
+        <h2>All available keywords for ability text</h2>
+        <small>Note: These are case-<b>in</b>sensitive. {error} will automatically be used in place of non-existent
+            keywords.</small>
+        <p>Usage: {awakening}{w}{b}</p>
+    </div>
+
+    <table id="keyword-table">
+        <thead>
+            <tr>
+                <th>Keyword</th>
+                <th>Image (non-fa)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <script type="module" src="scripts/keywords.js"></script>
+
+</body>
+
+</html>

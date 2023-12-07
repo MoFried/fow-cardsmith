@@ -1,0 +1,72 @@
+canvas {
+    border: 1px solid #000;
+    max-width: 100%;
+}
+
+#effectDiv {
+    font-family: "FOW_Text";
+    width: 580px;
+    height: 230px;
+    overflow: hidden;
+    /* border: 1px solid lime; */
+    color: black !important;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5) !important;
+    line-height: 1.25em;
+}
+
+#flavorDiv {
+    font-family: "FOW_Text";
+    width: 580px;
+    height: 55px;
+    overflow: hidden;
+    /* border: 1px solid magenta; */
+    color: black !important;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5) !important;
+    line-height: 1.2em;
+}
+
+.effectImage {
+    height: 1.25em;
+    vertical-align: bottom;
+}
+
+.cardEffect {
+    white-space: normal;
+}
+
+.brmedium {
+    display: block;
+    margin-bottom: 0.4em;
+}
+
+@font-face {
+    font-family: "FOW_Name";
+    src: url("font/ForceofWill002.0-Regular.ttf");
+}
+
+@font-face {
+    font-family: "FOW_Text";
+    src: url("font/AdobeFangsongStd-Regular.otf");
+}
+
+@font-face {
+    font-family: "Footer_Text";
+    src: url("font/Helvetica\ Neue\ Regular.otf");
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #ffffff;
+        background-color: #333333;
+    }
+}
