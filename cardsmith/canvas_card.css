@@ -1,3 +1,11 @@
+body {
+    cursor: url('./img/other/reiya_cursor.png') 4 0, auto;
+}
+
+select:hover {
+    cursor: url('./img/other/reiya_cursor.png') 4 0, auto;
+}
+
 canvas {
     border: 1px solid #000;
     max-width: 100%;
