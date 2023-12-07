@@ -169,7 +169,9 @@ async function updateCanvas() {
         await document.fonts.load('16px FOW_Text').then(function () {
             ctx.font = "italic 28px FOW_Text";
             ctx.fillStyle = "white";
-            ctx.fillText(formFields["void-cost"], constants.attrCoords[5].x, constants.attrCoords[5].y);
+            if (formFields["void-cost"] !== "0" || costImgs.length === 0) {
+                ctx.fillText(formFields["void-cost"], constants.attrCoords[5].x, constants.attrCoords[5].y);
+            }
         });
 
         costImgs.forEach(function (image, index) {
